@@ -61,3 +61,4 @@ gem "devise", "~> 4.9"
 gem "tailwindcss-rails", "~> 2.7"
 
 gem "rake", "~> 13.0"
+bundle install
