@@ -62,3 +62,4 @@ gem "tailwindcss-rails", "~> 2.7"
 
 gem "rake", "~> 13.0"
 gem "net-pop", "~> 0.1.2"
+gem "aws-sdk-s3", require: false
