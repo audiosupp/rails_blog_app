@@ -64,3 +64,5 @@ gem "rake", "~> 13.0"
 gem "net-pop", "~> 0.1.2"
 gem "aws-sdk-s3", require: false
 gem "rack-cors"
+
+gem "pagy", "~> 9.0"
