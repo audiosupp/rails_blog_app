@@ -1,16 +1,19 @@
+# test/models/blog_post_test.rb
+
 require "test_helper"
 
 class BlogPostTest < ActiveSupport::TestCase
+  fixtures :all
   test "draft? returns true for draft blog post" do
-    assert blog_posts(:draft).draft?
+    assert draft_blog_post.draft?
   end
 
-  test "draft? returns false for draft blog post" do
-    assert_not blog_posts(:published).draft?
+  test "draft? returns false for published blog post" do
+    assert_not draft_blog_post.published?
   end
 
   test "draft? returns false for scheduled blog post" do
-    assert_not blog_posts(:scheduled).draft?
+    assert_not draft_blog_post.scheduled?
   end
 
   test "published? return true for published blog post" do
@@ -18,7 +21,7 @@ class BlogPostTest < ActiveSupport::TestCase
   end
 
   test "published? return false for draft blog post" do
-    assert_not draft_blog_post.published?
+    assert_not BlogPost.new(published_at: nil).published?
   end
 
   test "published? return false for scheduled blog post" do
@@ -30,8 +33,9 @@ class BlogPostTest < ActiveSupport::TestCase
   end
 
   test "scheduled? return false for draft blog post" do
-    assert_not draft_blog_post.scheduled?
+    assert_not BlogPost.new(published_at: nil).scheduled?
   end
+
 
   test "scheduled? return false for published blog post" do
     assert_not BlogPost.new(published_at: 1.year.ago).scheduled?
@@ -39,5 +43,15 @@ class BlogPostTest < ActiveSupport::TestCase
 
   def draft_blog_post
     BlogPost.new(published_at: nil)
+  end
+
+  private
+
+  def get_post_body(post_id)
+    ActionText::RichText.find_by(record_type: "BlogPost", record_id: post_id).body
+  end
+
+  def blog_posts(name)
+    BlogPost.find_by(id: name.to_i)
   end
 end
