@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  resources :blog_posts
+  resources :blog_posts do
+    resources :cover_images, only: [ :destroy ], module: :blog_posts
+  end
 
   # get "/blog_posts/new", to: "blog_posts#new", as: :new_blog_post
   # get "/blog_posts/:id/edit", to: "blog_posts#edit", as: :edit_blog_post
