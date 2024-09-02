@@ -66,3 +66,6 @@ gem "aws-sdk-s3", require: false
 gem "rack-cors"
 
 gem "pagy", "~> 9.0"
+gem "pry", "~> 0.14.2"
+gem "pry-rails"
+gem "pry-nav"

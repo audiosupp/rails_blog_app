@@ -1,3 +1,4 @@
+# add that line to create new commit to test with branches and squashing
 class BlogPost < ApplicationRecord
   has_rich_text :content
   has_one_attached :cover_image
